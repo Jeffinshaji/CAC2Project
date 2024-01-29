@@ -51,7 +51,9 @@ def user_register(request):
             email=request.POST['email']
             password=request.POST['password']
             phone=request.POST['phone']
-            qulification=request.POST['qulification']
+            qualification=request.POST['qualification']
+            current=request.POST['current']
+            institution=request.POST['institution']
             interest=request.POST['interest']
             new_password = make_password(password)
             if interest=='Tutor':
@@ -65,7 +67,7 @@ def user_register(request):
                     user=i.id
                     break
             user = User.objects.get(id=user)
-            user_details.objects.create(user=user,Phone=phone,Qulification=qulification,Interest=interest)
+            user_details.objects.create(user=user,Phone=phone,Qualification=qualification,Interest=interest,CurrentStatus=current,Institution=institution)
             return redirect('success')
             
     return render(request, 'user/main/register.html')
