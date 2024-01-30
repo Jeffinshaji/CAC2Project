@@ -63,12 +63,13 @@ def user_register(request):
             current=request.POST['current']
             institution=request.POST['institution']
             interest=request.POST['interest']
+            new_password = make_password(password)
             if interest=='Tutor':
                 a=True
             else:
                 a=False
-            User.objects.create(username=username,email=email,password=password,is_staff=a)
-            user1=User.objects.filter(username=username,password=password,email=email)
+            User.objects.create(username=username,email=email,password=new_password,is_staff=a)
+            user1=User.objects.filter(username=username,password=new_password,email=email)
             for i in user1:
                 if i.username==username:
                     user=i.id

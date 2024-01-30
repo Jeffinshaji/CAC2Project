@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='login')
 def dashboard(request):
     return render(request , 'owner/main/dashboard.html')
 def buttons(request):
@@ -25,6 +26,7 @@ def tutor_table(request):
 def subject_table(request):
     return render(request,'owner/main/subjecttable.html')
 
+
 def owner_login(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -37,6 +39,10 @@ def owner_login(request):
             msg = "Wrong credentials. Please try again!"
             return render(request , 'owner/main/login.html' , {'msg':msg})
     return render(request , 'owner/main/login.html')
+
+def owner_logout(request):
+    logout(request)
+    return redirect('login')
 
 def status_change(request,id):
     user=User.objects.get(id=id)
