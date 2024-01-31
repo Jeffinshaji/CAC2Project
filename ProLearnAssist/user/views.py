@@ -7,9 +7,11 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-@login_required(login_url='Login')
+
 def user_profile(request):
-    return render(request,"user/main/userprofile.html")
+    data = user_details.objects.get(user_id = request.user)
+    print(data)
+    return render(request,"user/main/userprofile.html",{'data':data})
 
 
 def index(request):
