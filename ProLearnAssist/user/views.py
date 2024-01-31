@@ -2,9 +2,17 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
 from .models import user_details
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 
 # Create your views here.
+
+
+@login_required(login_url='Login')
+def user_profile(request):
+    return render(request,"user/main/userprofile.html")
+
+
 def index(request):
     return render(request,"user/main/index.html")
 
@@ -12,8 +20,9 @@ def about(request):
     return render(request,"user/main/about.html")
 def courses(request):
     return render(request,"user/main/courses.html")
-def user_profile(request):
-    return render(request,"user/main/userprofile.html")
+
+
+
 
 
 # def user_login(request):
@@ -32,10 +41,10 @@ def user_login(request):
         if user is not None and user.is_active:
             if user.is_superuser==False and user.is_staff==True:
                 login(request,user)
-                return redirect('userprofile')
+                return render(request, 'user/main/userprofile.html')
             elif user.is_superuser==False and user.is_staff==False:
                 login(request,user)
-                return redirect('userprofile')
+                return render(request, 'user/main/userprofile.html')
         elif user is None:
             msg = "Wrong credentials. Please try again!"
             return render(request , 'user/main/login.html' , {'msg':msg})
@@ -73,3 +82,10 @@ def user_register(request):
     return render(request, 'user/main/register.html')
 def success(request):
     return render(request,'user/main/success.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('Login')
+
+def lists(request):
+    return render(request,"user/main/list.html")

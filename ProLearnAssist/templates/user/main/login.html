@@ -12,6 +12,7 @@
   <title>ProLearnAssist</title>
   <link rel="shortcut icon" type="image/png" href="{%static 'assets/images/logos/favicon.png' %}" />
   <link rel="stylesheet" href="{%static 'assets/css/styles.min.css' %}" />
+  <link href="{%static 'user/css/style.css'%}" rel="stylesheet">
 </head>
 
 <body style="background-image: url('{% static 'userprofile\img\register.jpg' %}');background-size: cover;background-position: center;width: 100%;height: 100%;">
@@ -30,10 +31,10 @@
                 </a>
                 <h1 class="text-center"><b>ProLearnAssist</b></h1>
                 <h3>{{msg}}</h3>
-                <form method="POST">
+                <form method="POST" action="{% url 'Login' %}">
                   {% csrf_token %}
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">username</label>
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
                     <input type="username" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                   </div>
                   <div class="mb-4">
@@ -41,12 +42,6 @@
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
-                    <div class="form-check">
-                      <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
-                      <label class="form-check-label text-dark" for="flexCheckChecked">
-                        Remeber this Device
-                      </label>
-                    </div>
                     <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
                   </div>
                   <div class="d-flex justify-content-center">
