@@ -1,4 +1,8 @@
+{% extends 'user/base.html' %}
+
 {% load static %}
+
+{% block content %}
 <!doctype html>
 <html lang="en">
 
@@ -46,7 +50,7 @@
                     <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
                   </div>
                   <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn py-md-3 px-md-5 me-3 btn-primary ml-5">Sign In</button>
+                    <button type="submit" class="btn py-md-3 px-md-5 me-3 btn-primary ml-5 ">Sign In</button>
                   </div>
                 </form>
                   <div class="d-flex align-items-center justify-content-center">
@@ -66,3 +70,5 @@
 </body>
 
 </html>
+
+{% endblock content %}

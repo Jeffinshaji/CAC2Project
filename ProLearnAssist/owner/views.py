@@ -3,17 +3,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='login')
+@login_required(login_url='ownerlogin')
 def dashboard(request):
     return render(request , 'owner/main/dashboard.html')
 def buttons(request):
     return render(request, 'owner/main/buttons.html')
-def card(request):
-    return render(request, 'owner/main/card.html')
-def forms(request):
-    return render(request, 'owner/main/forms.html')
-def typography(request):
-    return render(request, 'owner/main/typography.html')
+# def card(request):
+#     return render(request, 'owner/main/card.html')
+# def forms(request):
+#     return render(request, 'owner/main/forms.html')
+# def typography(request):
+#     return render(request, 'owner/main/typography.html')
 def alerts(request):
     return render(request, 'owner/main/alerts.html')
 def user_table(request):
@@ -25,7 +25,10 @@ def tutor_table(request):
     return render(request, 'owner/main/tutortable.html')
 def subject_table(request):
     return render(request,'owner/main/subjecttable.html')
-
+def profile(request):
+    return render(request,'owner/main/ownerprofile.html')
+def profile_edit(request):
+    return render(request,'owner/main/owneredit.html')
 
 def owner_login(request):
     if request.method == "POST":
@@ -42,7 +45,7 @@ def owner_login(request):
 
 def owner_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('ownerlogin')
 
 def status_change(request,id):
     user=User.objects.get(id=id)

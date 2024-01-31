@@ -45,7 +45,7 @@
             </li>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="{% url 'card'%}" aria-expanded="false">
+            <a class="sidebar-link" href="{% url 'profile'%}" aria-expanded="false">
               <span>
                 <i class="ti ti-user fs-6"></i>
               </span>
@@ -168,8 +168,8 @@
             </li>
             <li class="nav-item">
               <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                <i class="ti ti-bell-ringing"></i>
-                <div class="notification bg-primary rounded-circle"></div>
+                <!-- <i class="ti ti-bell-ringing"></i> -->
+                <!-- <div class="notification bg-primary rounded-circle"></div> -->
               </a>
             </li>
           </ul>
@@ -179,11 +179,11 @@
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="{% static 'owner/images/profile/user-1.jpg'%}" alt="" width="35" height="35" class="rounded-circle">
+                  <!-- <img src=" static 'owner/images/profile/user-1.jpg'" alt="" width="35" height="35" class="rounded-circle"> -->
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2" data-bs-popper="static">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <!-- <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">My Profile</p>
                     </a>
@@ -195,7 +195,7 @@
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>
                     </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a> -->
                   </div>
                 </div>
               </li>
@@ -210,7 +210,7 @@
       {% endblock content %}
 
       <div class="py-6 px-6 text-center">
-        <p class="mb-0 fs-4">Design and Developed by <a href="https://ownermart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">ProLearnAssist</a> Distributed by <a href="https://themewagon.com">Christuniversity</a></p>
+        <p class="mb-0 fs-4">Design and Developed by <a href="{% url 'index' %}" target="_blank" class="pe-1 text-primary text-decoration-underline">ProLearnAssist</a> Distributed by <a href="">Christuniversity</a></p>
       </div>
     </div>
   </div>
