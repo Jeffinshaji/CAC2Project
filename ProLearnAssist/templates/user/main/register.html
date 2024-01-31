@@ -1,4 +1,4 @@
-{% extends 'user/base.html' %}
+{% extends 'user/LRbase.html' %}
 
 {% load static%}
 
@@ -72,9 +72,9 @@
                       <input type="text" name="institution" class="form-control" id="institution" aria-describedby="textHelp" required>
                     </div>
                     <div class="mb-3">
-                    {% if user.is_authenticated %}
+                    
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</button>
-                  {% endif %}
+                 
                 </form>
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
