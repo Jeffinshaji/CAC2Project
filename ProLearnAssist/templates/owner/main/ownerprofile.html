@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,10 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body> -->
-{%extends 'user/base.html'%}
-
-{% block content%}
+<body>
     <div class="container">
         <div class="main-body mt-5">
 
@@ -31,32 +28,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-3 p-4">
+                    <!-- <div class="card mt-3 p-4">
                         <h6 class="d-flex align-items-center mb-3 text-center">Notifications</h6>
                         <ul class="list-group list-group-flush">
-                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 
-                                <span class="text-secondary">https://bootdey.com</span>
+                                <span class="text-secondary"></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
     
-                                <span class="text-secondary">bootdey</span>
+                                <span class="text-secondary"></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 
-                                <span class="text-secondary">@bootdey</span>
+                                <span class="text-secondary"></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 
-                                <span class="text-secondary">bootdey</span>
+                                <span class="text-secondary"></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 
-                                <span class="text-secondary">bootdey</span>
-                            </li> -->
+                                <span class="text-secondary"></span>
+                            </li>
                         </ul>
-                    </div>
-                </div>
+                    </div>-->
+                </div> 
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <div class="card-body">
@@ -82,11 +79,9 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
-                                {% for i in data %}
                                 <div class="col-sm-9 text-secondary">
-                                    {{i.Phone}}
+                                    {{request.user.user_details.Phone}}
                                 </div>
-                                {% endfor %}
                             </div>
                             <hr>
                             <div class="row">
@@ -94,47 +89,61 @@
                                     <h6 class="mb-0">Position</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{data.CurrentStatus}},{{data.Institution}}
+                                    {{request.user.user_details.current}},{{request.user.user_details.institution}}
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <a class="btn btn-info " target="__blank"
-                                        href="edit.html">Edit</a>
+                                        href="{% url 'edit' %}">Edit</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row gutters-sm">
-                        <div class="col-sm-6 mb-3">
+                        <!--<div class="col-sm-6 mb-3">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h6 class="d-flex align-items-center mb-3">My Interests</h6>
                                     <small>Front-End Development</small>
-                                    <a class="btn btn-info float-end " target="__blank"
-                                        href="">Teach</a>
-                                    <hr>
+                                    <div class="progress mb-3" style="height: 2px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
                                     <small>DataBase Management System</small>
-                                    <a class="btn btn-info float-end" target="__blank"
-                                        href="">Teach</a>
-                                    <hr>
+                                    <div class="progress mb-3" style="height: 2px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
+                                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
                                     <small>Django</small>
-                                    <a class="btn btn-info float-end" target="__blank"
-                                        href="">Teach</a>
-                                    <hr>
-                                </div>
+                                    <div class="progress mb-3" style="height: 2px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
+                                            aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div> 
                             </div>
-                        </div>
-                        <div class="col-sm-6 mb-3">
+                        </div>-->
+                        <!--<div class="col-sm-6 mb-3">
                             <div class="card h-100">
                                 <div class="align card-body">
                                     <h6 class="d-flex align-items-center mb-3">I have to Improve</h6>
-                                    <a href="{%url 'lists'%}"><small>Mathematics</small></a><hr>
-                                    <a href="{%url 'lists'%}"><small>Statistics</small></a><hr>
-                                    <a href="{%url 'lists'%}"><small>Machine Learning</small></a><hr>
-                                    
-                                </div>
+                                    <a href="list.html"><small>Mathematics</small></a>
+                                    <div class="progress mb-3" style="height: 2px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <a href="list.html"><small>Statistics</small></a>
+                                    <div class="progress mb-3" style="height: 2px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
+                                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <a href="list.html"><small>Machine Learning</small></a>
+                                    <div class="progress mb-3" style="height: 2px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
+                                            aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -147,7 +156,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
     </script>
-
-    {% endblock content%}
-<!-- </body>
-</html> -->
+</body>
+</html>

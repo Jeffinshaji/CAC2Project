@@ -3,14 +3,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
 from .models import user_details
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
 
 
 def user_profile(request):
-    data = user_details.objects.get(user_id = request.user)
-    print(data)
+    data = user_details.objects.filter(user_id = request.user)
     return render(request,"user/main/userprofile.html",{'data':data})
 
 
