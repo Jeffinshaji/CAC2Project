@@ -13,13 +13,13 @@
 
 <body> -->
 
-    {% extends 'user/LRbase.html' %}
+    {% extends 'user/base.html' %}
 
     {% load static%}
     
     {% block content %}
 
-    <div class="container">
+    <div class="container mb-5">
         <div class="main-body pt-5">
             <div class="row">
                 <div class="col-lg-4">
@@ -29,7 +29,7 @@
                                 <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"
                                     class="rounded-circle p-1 bg-primary" width="110">
                                 <div class="mt-3">
-                                    <h4>John Doe</h4>
+                                    <h4>{{request.user.username}}</h4>
                                     <p class="text-secondary mb-1">Full Stack Developer</p>
                                     <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                                 </div>
@@ -104,7 +104,7 @@
                                     <h6 class="mb-0">Full Name</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" value="John Doe">
+                                    <input type="text" class="form-control" value="John Doe" placeholder={{request.user.username}}>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -157,8 +157,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-3"></div>
-                                <div class="col-sm-9 text-secondary">
+                                <!-- <div class="col-sm-9 text-secondary">
                                     <input type="button" class="btn btn-primary px-4" value="Save Changes">
+                                </div> -->
+                                <div class="col-sm-12">
+                                    <a class="btn btn-info " target="__blank"
+                                        href="{%url 'edit'%}">Edit</a>
                                 </div>
                             </div>
                             
@@ -207,6 +211,8 @@
     <script type="text/javascript">
 
     </script>
+
+    {%endblock content%}
 <!-- </body>
 
 </html> -->

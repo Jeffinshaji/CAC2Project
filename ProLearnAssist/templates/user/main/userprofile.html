@@ -86,7 +86,7 @@
                                 <div class="col-sm-9 text-secondary">
                                     {{i.Phone}}
                                 </div>
-                                {% endfor %}
+                                
                             </div>
                             <hr>
                             <div class="row">
@@ -94,14 +94,15 @@
                                     <h6 class="mb-0">Position</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{data.CurrentStatus}},{{data.Institution}}
+                                    {{i.CurrentStatus}}, {{i.Institution}}
                                 </div>
                             </div>
+                            {% endfor %}
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <a class="btn btn-info " target="__blank"
-                                        href="{%url 'edit'%}">Edit</a>
+                                        href="{%url 'useredit'%}">Edit</a>
                                 </div>
                             </div>
                         </div>
