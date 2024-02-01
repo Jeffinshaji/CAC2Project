@@ -90,3 +90,6 @@ def user_logout(request):
 
 def lists(request):
     return render(request,"user/main/list.html")
+
+def user_edit(request):
+    return render(request,"user/main/edit.html")
