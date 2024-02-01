@@ -82,9 +82,11 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
+                                {% for i in data %}
                                 <div class="col-sm-9 text-secondary">
-                                    {{request.user.user_user_details.Phone}}
+                                    {{i.Phone}}
                                 </div>
+                                {% endfor %}
                             </div>
                             <hr>
                             <div class="row">
@@ -92,7 +94,7 @@
                                     <h6 class="mb-0">Position</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{request.user.user_details.current}},{{request.user.user_details.institution}}
+                                    {{data.CurrentStatus}},{{data.Institution}}
                                 </div>
                             </div>
                             <hr>

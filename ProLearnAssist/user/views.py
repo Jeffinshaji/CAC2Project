@@ -8,9 +8,10 @@ from django.contrib.auth.hashers import make_password
 # Create your views here.
 
 
-@login_required(login_url='Login')
+
 def user_profile(request):
-    return render(request,"user/main/userprofile.html")
+    data = user_details.objects.filter(user_id = request.user)
+    return render(request,"user/main/userprofile.html",{'data':data})
 
 
 def index(request):
