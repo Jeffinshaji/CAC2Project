@@ -13,3 +13,18 @@ class user_details(models.Model):
     # Landmark=models.CharField(max_length=100,null=True)
     # DOB=models.CharField(max_length=100,null=True)
     
+class interests(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE, default=0)
+    Subject=models.CharField(max_length=100,null=False)
+    Teaching=models.CharField(max_length=100,null=False,default="No")
+
+    def __str__(self):
+        return str(self.Subject.__str__())
+    
+class improvements(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE, default=0)
+    Subject=models.CharField(max_length=100,null=False)
+    Learning=models.CharField(max_length=100,null=False,default="No")
+
+    def __str__(self):
+        return str(self.Subject.__str__())
