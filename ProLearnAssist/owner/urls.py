@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
 
 urlpatterns = [
@@ -15,5 +15,6 @@ urlpatterns = [
     path('logout',views.owner_logout,name="Logout"),
     path('profile',views.profile,name="profile"),
     path('edit',views.profile_edit,name="edit"),
+    # path('user/',include('user.urls')),
     
 ]

@@ -44,10 +44,10 @@ def user_login(request):
         if user is not None and user.is_active:
             if user.is_superuser==False and user.is_staff==True:
                 login(request,user)
-                return render(request, 'user/main/userprofile.html')
+                return redirect('userprofile')
             elif user.is_superuser==False and user.is_staff==False:
                 login(request,user)
-                return render(request, 'user/main/userprofile.html')
+                return redirect('userprofile')
         elif user is None:
             msg = "Wrong credentials. Please try again!"
             return render(request , 'user/main/login.html' , {'msg':msg})
