@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate , login , logout
 from .models import user_details, interests, improvements
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-
 # Create your views here.
 
 
@@ -97,22 +96,16 @@ def user_feedback(request):
     return render(request,"user/main/feedback.html")
 
 def user_edit(request):
-<<<<<<< HEAD
-    data = user_details.objects.filter(user_id = request.user)
-    return render(request,"user/main/edit.html",{'data':data})
-    
-=======
     
     if request.method=='POST':
         
         Subject=request.POST['interest']
         improve=request.POST['improvements']
-        userid=request.POST['userid']
         
         #Teaching=request.POST['']
-        interest=interests.objects.create(user=User.objects.get(id=userid),Subject=Subject)
+        interest=interests.objects.create(user=request.user,Subject=Subject)
         interest.save()
-        improvement=improvements.objects.create(user=User.objects.get(id=userid),Learning=improve)
+        improvement=improvements.objects.create(user=request.user,Learning=improve)
         improvement.save()
 
         return render(request,"user/main/edit.html")
@@ -121,7 +114,12 @@ def user_edit(request):
     data = user_details.objects.filter(user_id = request.user)
     return render(request,"user/main/edit.html",{'data':data})
 
+def teach_noti(request,id):
+    interest = interests.objects.get(id=id)
+    interest.Teaching_status = 1
+    interest.save()
+    return redirect('userprofile')
+
 
     
 
->>>>>>> 42413313de3d4db134c8c28be71fd0d85dcc4ff4

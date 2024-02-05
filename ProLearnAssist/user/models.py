@@ -16,7 +16,7 @@ class user_details(models.Model):
 class interests(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE, default=0)
     Subject=models.CharField(max_length=100,null=False)
-    Teaching=models.CharField(max_length=100,null=False,default="No")
+    Teaching_status = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.Subject.__str__())

@@ -9,7 +9,7 @@
               <div class="card">
                 <div class="card-body p-4">
                   <a href="{% url 'usertable' %}"><button type="button" class="btn btn-primary m-1">User Table </button></a>
-                  <button type="button" class="btn btn-secondary m-1">Subject Table </button>
+                  <!-- <button type="button" class="btn btn-secondary m-1">Subject Table </button> -->
                   <!-- <button type="button" class="btn btn-success m-1">Subject Table </button>
                   <button type="button" class="btn btn-danger m-1">Danger</button>
                   <button type="button" class="btn btn-warning m-1">Warning</button>
@@ -22,8 +22,8 @@
               <h5 class="card-title fw-semibold mb-4">Seperate Table </h5>
               <div class="card mb-0">
                 <div class="card-body p-4">
-                  <button type="button" class="btn btn-outline-primary m-1">Learner Table</button>
-                  <button type="button" class="btn btn-outline-secondary m-1">Tutor Table</button>
+                  <a href="{% url 'learner_table' %}"><button type="button" class="btn btn-outline-primary m-1">Learner Table</button></a>
+                  <a href="{% url 'tutor_table' %}"><button type="button" class="btn btn-outline-secondary m-1">Tutor Table</button></a>
                   <!-- <button type="button" class="btn btn-outline-success m-1">Success</button>
                   <button type="button" class="btn btn-outline-danger m-1">Danger</button>
                   <button type="button" class="btn btn-outline-warning m-1">Warning</button>

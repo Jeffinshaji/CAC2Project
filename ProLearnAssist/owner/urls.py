@@ -16,5 +16,9 @@ urlpatterns = [
     path('profile',views.profile,name="profile"),
     path('edit',views.profile_edit,name="edit"),
     # path('user/',include('user.urls')),
+    path('teaching_change/<int:id>',views.teaching_change,name="teaching_change"),
+    path('tutor_table',views.tutor_table,name="tutor_table"),
+    path('learner_table',views.learner_table,name="learner_table"),
+
     
 ]

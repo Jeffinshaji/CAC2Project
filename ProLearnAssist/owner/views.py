@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.decorators import login_required
-from user.models import User
+from user.models import User,user_details,interests
 
 
 @login_required(login_url='ownerlogin')
@@ -17,18 +17,23 @@ def buttons(request):
 # def typography(request):
 #     return render(request, 'owner/main/typography.html')
 def alerts(request):
-    return render(request, 'owner/main/alerts.html')
+    data = interests.objects.all()
+    return render(request, 'owner/main/alerts.html',{'data':data})
 def user_table(request):
     data=User.objects.all()
     return render(request, 'owner/main/usertable.html',{"data":data})
 def learner_table(request):
-    return render(request, 'owner/main/learnertable.html')
+    learner=User.objects.filter(is_staff=False)
+    return render(request, 'owner/main/learnertable.html',{'learner':learner})
 def tutor_table(request):
-    return render(request, 'owner/main/tutortable.html')
+    tutor=User.objects.filter(is_staff=True,is_superuser=False)
+    accepted=interests.objects.filter(Teaching_status=2)
+    return render(request, 'owner/main/tutortable.html',{'tutor':tutor,'accepted':accepted})
 def subject_table(request):
     return render(request,'owner/main/subjecttable.html')
 def profile(request):
-    return render(request,'owner/main/ownerprofile.html')
+    data = user_details.objects.get(user=request.user)
+    return render(request,'owner/main/ownerprofile.html',{'data':data})
 def profile_edit(request):
     return render(request,'owner/main/owneredit.html')
 
@@ -62,5 +67,17 @@ def user_delete(request,id):
     user=User.objects.get(id=id)
     user.delete()
     return redirect("usertable")
+
+def teaching_change(request,id):
+    interest = interests.objects.get(id = id)
+    if interest.Teaching_status == 2:
+        interest.Teaching_status = 1
+    elif interest.Teaching_status == 1:
+        interest.Teaching_status = 2
+
+    interest.save()
+    return redirect('alerts')
+
+
     
 

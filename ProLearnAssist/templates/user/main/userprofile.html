@@ -25,17 +25,10 @@
                                     class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>{{request.user.username}}</h4>
-<<<<<<< HEAD
-                                    {% for i in data%}
-                                    <p class="text-secondary mb-1">{{i.CurrentStatus}}</p>
-                                    <p class="text-muted font-size-sm">{{i.Institution}}</p>
-                                    {%endfor%}
-=======
                                     {% for i in data %}
                                     <p class="text-secondary mb-1">{{i.CurrentStatus}}</p>
                                     <p class="text-muted font-size-sm">{{i.Institution}}</p>
                                     {% endfor %}
->>>>>>> b1a927c0a40f3ad82a89be0c80e75eb3a30bb315
                                 </div>
                             </div>
                         </div>
@@ -123,8 +116,16 @@
                                     <h6 class="d-flex align-items-center mb-3">My Interests</h6>
                                     {% for i in interest %}
                                     <small>{{i.Subject}}</small>
+                                    {% if i.Teaching_status == 0 %}
                                     <a class="btn btn-info float-end "
-                                        href="">Teach</a>
+                                        href="{% url 'teach_noti' id=i.id %}">TEACH</a>
+                                        {% elif i.Teaching_status == 1 %}
+                                        <a class="btn btn-info float-end "
+                                        href="#">REQUESTED</a>
+                                        {% elif i.Teaching_status == 2 %}
+                                        <a class="btn btn-info float-end "
+                                        href="#">ACCEPTED</a>
+                                        {% endif %}
                                     <hr>
                                     {% endfor %}
                                     <!-- <small>DataBase Management System</small>
