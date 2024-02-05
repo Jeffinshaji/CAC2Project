@@ -11,10 +11,13 @@ We have two modules such as admin and users. Since this platform allws users to 
 There are multiple functionalities facilitiated for admin and users.
 
 <h3>Functionalities of Admin</h3>
+<ul>
   1. Admin is by default registered. Admin have login id and password which directs to the admin dashboard.
   2. In admin dashboard, there is a separate sidebar which has options like viewing profile, access to tables and notifications.
   3. Using usertables admin can activate and deactivate users. Admin can also view the tutors and students list separately.
   4. While user give request for being a tutor, admin get notified and approve it to make the user a tutor.
+</ul>
+  
 
   <h3>Functionalities of User</h3>
   1. User can view the homepage, about, courses and contact details withput logging in.
