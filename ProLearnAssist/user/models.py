@@ -12,6 +12,18 @@ class user_details(models.Model):
     # City=models.CharField(max_length=100,null=True)
     # Landmark=models.CharField(max_length=100,null=True)
     # DOB=models.CharField(max_length=100,null=True)
+
+class feedback(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE,default=0)
+    name=models.CharField(max_length=100,null=True)
+    Date=models.DateField(null=False)
+    Instructor=models.CharField(max_length=100,null=False)
+    Content=models.IntegerField(null=False)
+    levelofteaching=models.IntegerField(null=False)
+    Material=models.IntegerField(null=False)
+    Rating=models.IntegerField(null=False)
+    Overallrating=models.IntegerField(null=False)
+    Comments=models.CharField(max_length=100,null=False) 
     
 class interests(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE, default=0)
