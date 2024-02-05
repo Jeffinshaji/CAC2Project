@@ -1,9 +1,10 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
-from .models import user_details, interests, improvements,teching
+from .models import user_details, interests, improvements,teching,feedback
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
+
 # Create your views here.
 
 
@@ -52,6 +53,39 @@ def user_login(request):
             return render(request , 'user/main/login.html' , {'msg':msg})
     return render(request , 'user/main/login.html')
 
+
+# def feedbackform(request):
+#     if request.method == 'POST':
+#         name=request.POST["name"]
+#         print(name)
+#         Date=request.POST["date"]
+#         print(Date)
+#         Instructor=request.POST["instructor"]
+#         print(Instructor)
+#         Content=request.POST["Content"]
+#         print(Content)
+#         level=request.POST["tutorlevel"]
+#         print(level)
+#         material=request.POST["Material"]
+#         print(material)
+#         Turating=request.POST["rating"]
+#         print(Turating)
+#         allrating=request.POST["overall"]
+#         print(allrating)
+#         comment=request.POST["comments"]
+#         print(comment)
+#         Feedback=feedback.objects.create(name=name, Date=Date,Instructor=Instructor,Content=Content,levelofteaching=level, Material=material,Rating=Turating, Overallrating=allrating,Comments=comment)
+#         Feedback.save()
+#         return redirect('Thanks')
+            
+    # return render(request, 'user/main/register.html')
+        # return render(request, 'user/main/thanks.html')
+    
+    # else:
+    #     object = feedback()
+    return render(request, 'user/main/feedback.html')
+
+
 def user_register(request):
     if request.method=='POST':
         username=request.POST['name']
@@ -96,7 +130,35 @@ def lists(request,sub):
     return render(request,"user/main/list.html",{'tlist':tlist,'status':a})
 
 def user_feedback(request):
-    return render(request,"user/main/feedback.html")
+    if request.method == 'POST':
+        user_id=request.user.id
+        user=User.objects.get(id=user_id)
+        name=request.POST["uname"]
+        print(name)
+        Date=request.POST["date"]
+        print(Date)
+        Instructor=request.POST["iname"]
+        print(Instructor)
+        Content=request.POST["content"]
+        print(Content)
+        level=request.POST["tulevel"]
+        print(level)
+        material=request.POST["material"]
+        print(material)
+        Turating=request.POST["rating"]
+        print(Turating)
+        allrating=request.POST["Overall"]
+        print(allrating)
+        comment=request.POST["msg"]
+        print(comment)
+        Feedback=feedback.objects.create(user=user,name=name, Date=Date,Instructor=Instructor,Content=Content,levelofteaching=level, Material=material,Rating=Turating, Overallrating=allrating,Comments=comment)
+        Feedback.save()
+        return redirect('thanks') 
+    else:
+        return render(request,"user/main/feedback.html")
+    
+def thanks(request):
+    return render(request,'user/main/thanks.html')
 
 def user_edit(request):
     
