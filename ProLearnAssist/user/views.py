@@ -92,4 +92,6 @@ def lists(request):
     return render(request,"user/main/list.html")
 
 def user_edit(request):
-    return render(request,"user/main/edit.html")
+    data = user_details.objects.filter(user_id = request.user)
+    return render(request,"user/main/edit.html",{'data':data})
+    
