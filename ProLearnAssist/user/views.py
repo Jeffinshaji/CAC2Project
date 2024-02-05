@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
-from .models import user_details, interests, improvements
+from .models import user_details, interests, improvements,teching
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 # Create your views here.
@@ -89,8 +89,11 @@ def user_logout(request):
     logout(request)
     return redirect('Login')
 
-def lists(request):
-    return render(request,"user/main/list.html")
+def lists(request,sub):
+    tlist=interests.objects.filter(Subject=sub,Teaching_status=2)
+    tstatus = teching.objects.filter(teach_to=request.user)
+    a = []
+    return render(request,"user/main/list.html",{'tlist':tlist,'status':a})
 
 def user_feedback(request):
     return render(request,"user/main/feedback.html")
@@ -122,4 +125,13 @@ def teach_noti(request,id):
 
 
     
+def change(request,id):
+    user =User.objects.get(id=id)
+    if teching.objects.filter(teach_by=user,teach_to=request.user,teach_status=0).exists():
+        teach = teching.objects.get(teach_by=user,teach_to=request.user,teach_status=0)
+        teach.teach_status = 1
+        teach.save()
+    else:
+        teach = teching.objects.create(teach_by=user,teach_to=request.user)
+    return redirect('userprofile')
 

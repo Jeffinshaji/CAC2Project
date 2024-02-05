@@ -10,9 +10,10 @@ urlpatterns=[
     path('success',views.success,name='success'),
     path('userprofile',views.user_profile,name='userprofile'),
     path('logout',views.user_logout,name='logout'),
-    path('lists',views.lists,name="lists"),
+    path('lists/<str:sub>',views.lists,name="lists"),
     path('useredit',views.user_edit,name="useredit"),
     path('feedback',views.user_feedback,name="feedback"),
-    path('teach/<int:id>',views.teach_noti,name="teach_noti")
+    path('teach/<int:id>',views.teach_noti,name="teach_noti"),
+    path('change/<int:id>',views.change,name="change")
     
 ]

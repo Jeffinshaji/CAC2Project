@@ -15,76 +15,33 @@
 {%extends 'user/base.html'%}
 
 {% block content%}
-
-    <div class="col-md- mt-5 row justify-content-center">
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a class="btn btn-info " target="__blank"
-                            href="edit.html">Request</a>
-                    </div>
-                    <div class="col-sm-4 text-dark font-weight-bold">
-                        Kenneth Valdez
-                    </div>
-                    <div class="col-sm-4 text-dark">
-                        MSc Data Science
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a class="btn btn-info " target="__blank"
-                        href="edit.html">Request</a>
-                    </div>
-                    <div class="col-sm-4 text-dark font-weight-bold">
-                        Kenneth Valdez         
-                    </div>
-                    <div class="col-sm-4 text-dark">
-                        MBA
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a class="btn btn-info " target="__blank"
-                            href="edit.html">Request</a>
-                    </div>
-                    <div class="col-sm-4 text-dark font-weight-bold">
-                        Kenneth Valdez
-                    </div>
-                    <div class="col-sm-4 text-dark">
-                        BBA FInal Year
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a class="btn btn-info " target="__blank"
-                            href="edit.html">Request</a>
-                    </div>
-                    <div class="col-sm-4 text-dark font-weight-bold">
-                        Kenneth Valdez
-                    </div>
-                    <div class="col-sm-4 text-dark">
-                        MBA Student
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a class="btn btn-info " target="__blank"
-                            href="edit.html">Request</a>
-                    </div>
-                    <div class="col-sm-4 text-dark font-weight-bold">
-                        Kenneth Valdez
-                    </div>
-                    <div class="col-sm-4 text-dark">
-                        BBA Teacher
-                    </div>
-                </div>
-                <hr>
-                
-            </div>
-        </div>
+ <!-- Content for the table -->
+ <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="mb-4">Tutor List</h1>
+        <!-- Your table goes here -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>TutorName</th>
+              <th>Subject</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in tlist  %}
+            <tr>
+              <td>{{i.user.username}}</td>
+              <td>{{i.Subject}}</td>
+              <td><button onclick="alert('Are you sure?')" type="submit" style="background-color: blue; padding: 5px; border-radius: 10px; border: none;"><a href="{% url 'change' id=i.user.id %}" style="text-decoration: none;color: black;">Request</a></button></td>
+              
+            </tr>
+            {% endfor %}
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 {% endblock content%}

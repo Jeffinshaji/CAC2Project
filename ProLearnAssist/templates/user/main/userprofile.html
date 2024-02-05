@@ -144,10 +144,9 @@
                                 <div class="align card-body">
                                     <h6 class="d-flex align-items-center mb-3">I have to Improve</h6>
                                     {% for k in improvement %}
-                                            <a href="{% url 'lists' %}"><small>{{k.Learning}}</small></a><hr>  
+                                            <a href="{% url 'lists' sub=k.Learning %}"><small>{{k.Learning}}</small></a><hr>  
                                     {% endfor %}
-                                    <!-- <a href="{%url 'lists'%}"><small>Statistics</small></a><hr>
-                                    <a href="{%url 'lists'%}"><small>Machine Learning</small></a><hr> -->
+                                    
                                     
                                 </div>
                             </div>

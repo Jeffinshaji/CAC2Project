@@ -28,3 +28,8 @@ class improvements(models.Model):
 
     def __str__(self):
         return str(self.Subject.__str__())
+    
+class teching(models.Model):
+    teach_by=models.ForeignKey(User,related_name='teachingBy',on_delete=models.CASCADE, default=0)
+    teach_to=models.ForeignKey(User,related_name='teachingTo',on_delete=models.CASCADE, default=0)
+    teach_status=models.IntegerField(default=0)
