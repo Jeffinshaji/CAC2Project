@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
-from .models import user_details
+from .models import user_details, interests, improvements
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 
@@ -11,7 +11,9 @@ from django.contrib.auth.hashers import make_password
 
 def user_profile(request):
     data = user_details.objects.filter(user_id = request.user)
-    return render(request,"user/main/userprofile.html",{'data':data})
+    interest=interests.objects.filter(user_id = request.user)
+    improvement=improvements.objects.filter(user_id = request.user)
+    return render(request,"user/main/userprofile.html",{'data':data,'interest':interest,'improvement':improvement})
 
 
 def index(request):
@@ -91,7 +93,35 @@ def user_logout(request):
 def lists(request):
     return render(request,"user/main/list.html")
 
+def user_feedback(request):
+    return render(request,"user/main/feedback.html")
+
 def user_edit(request):
+<<<<<<< HEAD
     data = user_details.objects.filter(user_id = request.user)
     return render(request,"user/main/edit.html",{'data':data})
     
+=======
+    
+    if request.method=='POST':
+        
+        Subject=request.POST['interest']
+        improve=request.POST['improvements']
+        userid=request.POST['userid']
+        
+        #Teaching=request.POST['']
+        interest=interests.objects.create(user=User.objects.get(id=userid),Subject=Subject)
+        interest.save()
+        improvement=improvements.objects.create(user=User.objects.get(id=userid),Learning=improve)
+        improvement.save()
+
+        return render(request,"user/main/edit.html")
+
+    
+    data = user_details.objects.filter(user_id = request.user)
+    return render(request,"user/main/edit.html",{'data':data})
+
+
+    
+
+>>>>>>> 42413313de3d4db134c8c28be71fd0d85dcc4ff4

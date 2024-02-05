@@ -25,10 +25,17 @@
                                     class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>{{request.user.username}}</h4>
+<<<<<<< HEAD
+                                    {% for i in data%}
+                                    <p class="text-secondary mb-1">{{i.CurrentStatus}}</p>
+                                    <p class="text-muted font-size-sm">{{i.Institution}}</p>
+                                    {%endfor%}
+=======
                                     {% for i in data %}
                                     <p class="text-secondary mb-1">{{i.CurrentStatus}}</p>
                                     <p class="text-muted font-size-sm">{{i.Institution}}</p>
                                     {% endfor %}
+>>>>>>> b1a927c0a40f3ad82a89be0c80e75eb3a30bb315
                                 </div>
                             </div>
                         </div>
@@ -114,18 +121,20 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h6 class="d-flex align-items-center mb-3">My Interests</h6>
-                                    <small>Front-End Development</small>
-                                    <a class="btn btn-info float-end " target="__blank"
+                                    {% for i in interest %}
+                                    <small>{{i.Subject}}</small>
+                                    <a class="btn btn-info float-end "
                                         href="">Teach</a>
                                     <hr>
-                                    <small>DataBase Management System</small>
+                                    {% endfor %}
+                                    <!-- <small>DataBase Management System</small>
                                     <a class="btn btn-info float-end" target="__blank"
                                         href="">Teach</a>
                                     <hr>
                                     <small>Django</small>
                                     <a class="btn btn-info float-end" target="__blank"
                                         href="">Teach</a>
-                                    <hr>
+                                    <hr> -->
                                 </div>
                             </div>
                         </div>
@@ -133,9 +142,11 @@
                             <div class="card h-100">
                                 <div class="align card-body">
                                     <h6 class="d-flex align-items-center mb-3">I have to Improve</h6>
-                                    <a href="{%url 'lists'%}"><small>Mathematics</small></a><hr>
-                                    <a href="{%url 'lists'%}"><small>Statistics</small></a><hr>
-                                    <a href="{%url 'lists'%}"><small>Machine Learning</small></a><hr>
+                                    {% for k in improvement %}
+                                            <a href="{% url 'lists' %}"><small>{{k.Learning}}</small></a><hr>  
+                                    {% endfor %}
+                                    <!-- <a href="{%url 'lists'%}"><small>Statistics</small></a><hr>
+                                    <a href="{%url 'lists'%}"><small>Machine Learning</small></a><hr> -->
                                     
                                 </div>
                             </div>
