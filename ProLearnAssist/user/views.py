@@ -13,7 +13,8 @@ def user_profile(request):
     data = user_details.objects.filter(user_id = request.user)
     interest=interests.objects.filter(user_id = request.user)
     improvement=improvements.objects.filter(user_id = request.user)
-    return render(request,"user/main/userprofile.html",{'data':data,'interest':interest,'improvement':improvement})
+    noti = teching.objects.filter(teach_by=request.user,teach_status=0)
+    return render(request,"user/main/userprofile.html",{'data':data,'interest':interest,'improvement':improvement,'noti':noti})
 
 
 def index(request):
@@ -195,13 +196,14 @@ def teach_noti(request,id):
 
 
     
-def change(request,id):
+def change(request,id,sub):
     user =User.objects.get(id=id)
-    if teching.objects.filter(teach_by=user,teach_to=request.user,teach_status=0).exists():
+    if teching.objects.filter(teach_by=user,teach_to=request.user,teach_status=0,sub=sub).exists():
         teach = teching.objects.get(teach_by=user,teach_to=request.user,teach_status=0)
         teach.teach_status = 1
         teach.save()
     else:
-        teach = teching.objects.create(teach_by=user,teach_to=request.user)
+        teach = teching.objects.create(teach_by=user,teach_to=request.user,sub=sub)
     return redirect('userprofile')
+
 

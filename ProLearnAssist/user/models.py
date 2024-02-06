@@ -44,4 +44,5 @@ class improvements(models.Model):
 class teching(models.Model):
     teach_by=models.ForeignKey(User,related_name='teachingBy',on_delete=models.CASCADE, default=0)
     teach_to=models.ForeignKey(User,related_name='teachingTo',on_delete=models.CASCADE, default=0)
+    sub = models.CharField(null=False,max_length=225,default=0)
     teach_status=models.IntegerField(default=0)

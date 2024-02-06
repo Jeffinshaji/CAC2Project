@@ -14,7 +14,7 @@ urlpatterns=[
     path('useredit',views.user_edit,name="useredit"),
     path('feedback',views.user_feedback,name="feedback"),
     path('teach/<int:id>',views.teach_noti,name="teach_noti"),
-    path('change/<int:id>',views.change,name="change"),
+    path('change/<int:id>/<str:sub>',views.change,name="change"),
     path('thanks',views.thanks,name="thanks"),
     
 ]

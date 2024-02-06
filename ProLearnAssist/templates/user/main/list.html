@@ -34,7 +34,7 @@
             <tr>
               <td>{{i.user.username}}</td>
               <td>{{i.Subject}}</td>
-              <td><button onclick="alert('Are you sure?')" type="submit" style="background-color: blue; padding: 5px; border-radius: 10px; border: none;"><a href="{% url 'change' id=i.user.id %}" style="text-decoration: none;color: black;">Request</a></button></td>
+              <td><button onclick="alert('Are you sure?')" type="submit" style="background-color: blue; padding: 5px; border-radius: 10px; border: none;"><a href="{% url 'change' id=i.user.id sub=i.Subject %}" style="text-decoration: none;color: black;">Request</a></button></td>
               
             </tr>
             {% endfor %}
