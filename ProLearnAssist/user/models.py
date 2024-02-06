@@ -36,7 +36,7 @@ class interests(models.Model):
 class improvements(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE, default=0)
     Subject=models.CharField(max_length=100,null=False)
-    Learning=models.CharField(max_length=100,null=False,default="No")
+    Learning=models.CharField(max_length=100,null=False)
 
     def __str__(self):
         return str(self.Subject.__str__())

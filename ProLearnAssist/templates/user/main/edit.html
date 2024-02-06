@@ -109,7 +109,7 @@
                                     <label for="fullname" class="mb-2">Full Name</label>
                                 <!-- </div>
                                 <div class="col-sm-9 text-secondary"> -->
-                                    <input type="text" class="form-control col-sm-9 text-secondary" value="" name="">
+                                    <input type="text" class="form-control col-sm-9 text-secondary" value="{{request.user.username}}" name="">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -154,18 +154,33 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <label for="interest" class="mb-0">Add Interests</label>
                                 <!-- </div>
                                 <div class="col-sm-9 text-secondary"> -->
-                                    <input type="text" class="form-control col-sm-9 text-secondary" value="" name="interest">
+                                    <!-- <input type="text" class="form-control col-sm-9 text-secondary" value="" name="interest"> -->
+                                        <select class="form-select" aria-label="Default select example" name="interest">
+                                            <option disabled selected >Add Interest</option>
+                                            <option >Mathematics</option>
+                                            <option >Statistics</option>
+                                            <option >Python</option>
+                                            <option >Web Development</option>
+                                            <option >DBMS</option>
+                                          </select>
+                                      
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <label for="improvements" class="mb-0">Add Subjects to be improved</label>
+                                    <!-- <label for="improvements" class="mb-0">Add Subjects to be improved</label> -->
                                 <!-- </div>
                                 <div class="col-sm-9 text-secondary"> -->
-                                    <input type="text" class="form-control" name="improvements">
+                                    <select class="form-select" aria-label="Default select example" name="improvements">
+                                        <option disabled selected >Add Improvement</option>
+                                        <option >Mathematics</option>
+                                        <option >Statistics</option>
+                                        <option >Python</option>
+                                        <option >Web Development</option>
+                                        <option >DBMS</option>
+                                      </select>
                                 </div>
                             </div>
                             <div class="row">

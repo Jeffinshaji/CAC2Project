@@ -164,14 +164,22 @@ def user_edit(request):
     
     if request.method=='POST':
         
-        Subject=request.POST['interest']
-        improve=request.POST['improvements']
         
-        #Teaching=request.POST['']
-        interest=interests.objects.create(user=request.user,Subject=Subject)
-        interest.save()
-        improvement=improvements.objects.create(user=request.user,Learning=improve)
-        improvement.save()
+        
+        if 'interest' in request.POST and request.POST['interest'] is not None:
+            Subject=request.POST['interest']
+            if interests.objects.filter(user=request.user,Subject=Subject).exists() or improvements.objects.filter(user=request.user,Learning=Subject).exists():
+                pass
+            else:
+                interest=interests.objects.create(user=request.user,Subject=Subject)
+                interest.save()
+        if 'improvements' in request.POST and request.POST['improvements'] is not None:
+            improve=request.POST['improvements']
+            if improvements.objects.filter(user=request.user,Learning=improve).exists() or interests.objects.filter(user=request.user,Subject=improve).exists():
+                pass
+            else:
+                improvement=improvements.objects.create(user=request.user,Learning=improve)
+                improvement.save()
 
         return render(request,"user/main/edit.html")
 
