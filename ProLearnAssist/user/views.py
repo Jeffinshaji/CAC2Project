@@ -181,8 +181,11 @@ def user_edit(request):
             else:
                 improvement=improvements.objects.create(user=request.user,Learning=improve)
                 improvement.save()
+        return redirect('userprofile')
+    
+    return render(request,"user/main/edit.html")    
 
-        return render(request,"user/main/edit.html")
+        
 
     
     data = user_details.objects.filter(user_id = request.user)
