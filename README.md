@@ -24,5 +24,6 @@ There are multiple functionalities facilitiated for admin and users.
   4. User portal can see their profile in their portal.They can add their subjects as interested and to be improved.<br>
   5. They can request to admin for being a tutor for interested subject. Once it is approved by admin they will be added to the tutor list of their respective subjects.<br>
   6. If they click on the subjects to be improved, they will be provided with the list of tutors available for that subject. They can select their tutor and send them requests.<br>
-  7. Users also have a feedback form to give feedbacks regarding tutors and website. The feedbacks will get stored in the database.<br>
+  7. When the request is sent to the tutor, tutor will be notified in the notification tab of the user.<br>
+  8. Users also have a feedback form to give feedbacks regarding tutors and website. The feedbacks will get stored in the database.<br>
   
