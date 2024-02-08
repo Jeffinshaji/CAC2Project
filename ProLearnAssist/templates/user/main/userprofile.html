@@ -39,7 +39,7 @@
                             {% for i in noti %}
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                 
-                                <span class="text-secondary">from:{{i.teach_to}},sub:{{ i.sub }}</span>
+                                <span class="text-secondary">Teach request from <u><b>{{i.teach_to}}</b></u> for subject <u><b>{{ i.sub }}</b></u></span>
                             </li>
                             {% endfor %}
                         </ul>
